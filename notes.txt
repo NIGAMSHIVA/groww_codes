@@ -63,6 +63,18 @@ With let, each iteration creates a new binding (block scope).To achieve the same
 setTimeout inside another function (IIFE) so that each closure captures a fresh copy of the variable.
 
 
-13.Callback function help to do async operations in JS.It is when a function is passed as a argument during invoking a function.It helps from blocking main thread.
-Its main use is that function called only when the main function wants.For example in setTimeout(function(){},1000) this is called after the 1 second.
+13.A callback function is a function passed as an argument to another function,
+allowing code to be executed after the main function finishes its work or an event occurs.
+It helps JavaScript handle asynchronous operations (like timers, API calls, or user actions)
+without blocking the main thread.For example in setTimeout(function(){},1000) this is called after the  second.
+Even Listners
 
+function xyz(){
+
+    var i=1;
+
+document.getElementById("Click me").addEventListener("click",function abc(){
+    console.log("It is Clicked",i++);
+})
+
+}
