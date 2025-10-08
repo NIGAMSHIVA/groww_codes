@@ -1,0 +1,68 @@
+1.In JavaScript, hoisting means moving declarations to the top of their scope before execution. Functions are hoisted completely, while variables declared
+with var are hoisted and initialized as undefined, and those declared with let or const are hoisted but remain in a temporal dead zone
+until execution reaches them.
+
+2.Every time JavaScript code runs, it creates an Execution Context that has two parts — a memory component (variable environment) and a code component 
+(thread of execution). JavaScript runs in a single thread and executes code synchronously, one line at a time,inside this context.
+
+3.In JavaScript, parameters are placeholders in a function definition, while arguments are actual values passed during invocation. Every function call creates
+ a new execution context which is managed by the call stack — a LIFO structure that pushes a new context when a function is invoked and pops it once it returns.
+ The global execution context stays at the bottom and is removed only when the entire program completes.
+
+4.Each time a function runs, JavaScript creates a new execution context with its own local memory. If a variable with the same name exists in both local
+ and global scopes, the local variable shadows the global one. So, console.log() inside the function accesses the local variable, not the global one.
+
+
+5.At the global level, JavaScript creates a Global Execution Context with a global object (window in browsers, global in Node.js) and a global this that points to the 
+same object.Variables declared using var in the global scope become properties of the global object, while let and const do not.Anything not inside a function
+ is part of the global scope.
+
+Note- Breakpoint applied only to there where there is some piece of JS,it means program will pause before that line it will not include that line.
+
+6.In JavaScript, during the memory creation phase, variables declared with var are assigned the value undefined, which acts as a placeholder until initialization.
+If a variable is accessed before being declared, a ReferenceError (“not defined”) occurs because it doesn’t exist in memory.
+JavaScript is loosely typed — a variable’s type is determined dynamically at runtime and can change as values are reassigned.
+
+7.A Lexical Environment is the combination of a function’s local memory and a reference to its parent’s Lexical Environment.The Scope Chain is the chain of these 
+Lexical Environments used when resolving variables.If function b is defined inside function a, then b’s Lexical Environment includes its own local memory,
+a reference to a’s Lexical Environment, and through that, access to the global environment.
+
+8.All variables in JavaScript are hoisted, but they behave differently.var is hoisted to the global memory and initialized with undefined, which makes it accessible
+ even before its declaration.let and const are also hoisted but stored in a separate memory space, not attached to the window object. They stay uninitialized during
+the Temporal Dead Zone (TDZ) until the code line where they are assigned a value.Accessing them before initialization results in a ReferenceError.const must be 
+ declared and initialized at the same time and cannot be reassigned, while let can be reassigned but not redeclared in the same scope.
+
+9.Shadowing occurs when a variable declared inside a block or inner scope has the same name as one in an outer scope, temporarily hiding the outer variable within 
+that scope.let and const are block-scoped, meaning they are accessible only within the {} block where they are declared.var is function-scoped, so it ignores blocks 
+unless those blocks are functions.
+
+10.Closure is formed when an inner function “closes over” the variables of its outer function — keeping them alive even after the outer function 
+has finished executing.
+
+function a(){
+
+    var x=10;
+
+    function b(){
+
+        console.log(x);
+
+    }
+
+    return b
+
+}
+var value=a(); // value has the function b
+value();
+
+11.JavaScript is synchronous it does not wait for anyone setTimeout() is stored somewhere and value can be stored with the help of closures so so it runs the statement
+after the setTimout and once the timer is finished is print the setTimeout statement.
+
+12.Closures in JavaScript remember the variable bindings from their lexical scope — not just the values.With var, all callbacks share the same binding (function scope).
+With let, each iteration creates a new binding (block scope).To achieve the same effect using var, we must manually create a new scope — usually by wrapping
+setTimeout inside another function (IIFE) so that each closure captures a fresh copy of the variable.
+
+
+13.Callback function help to do async operations in JS.It is when a function is passed as a argument during invoking a function.It helps from blocking main thread.
+Its main use is that function called only when the main function wants.For example in setTimeout(function(){},1000) this is called after the 1 second.
+
