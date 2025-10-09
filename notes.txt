@@ -78,3 +78,24 @@ document.getElementById("Click me").addEventListener("click",function abc(){
 })
 
 }
+
+14.Everything happens inside the callStack and one operation is done one at a time ,So when one operation is popped from the callStack then another start working.
+So the problem occurs when We have something Which will take time & JS dont wait for anyone.Then We have to use some for superpowers which are known as WEB APIs
+given by the browsers to us like fetch,setTimeout,DOM APIs,Local Storage ,Console.These are not the part of JS.So after the timer expire the callback function need to be inside
+the CallStack to get executed.This Happens with the help of callBack Queue and Event Loop.Callback queue stores the callback function after the timer expires and
+the event loop checks the callback queue and put that callback function into the call Stack
+
+15.DOM API gives access to the HTML code so when we do document.getElementByID("Click Me").addEventListener("Click",function(){
+    console.log("Button is Clicked")
+}) addEventListener creates a callback on Event ,So when that Event is Clicked Callback get inside the Callback Quueue and then Event Loop take it into the call Stack.
+
+16.There is Something known as Microtask Queue which has more priority than CallBack Queue.Callback functios of promises and mutation observer comes inside the microtask Queue.
+Callback queue function is executed when only the microtask queue functions are get executed.If the task inside the microtask queue create a subtask inside the microtask 
+queue then the callback queue dont get the opportunity to get in the callstack.This is known as Starvation.
+
+
+17.map() → transforms every element.
+
+filter() → selects elements based on condition.
+
+reduce() → combines elements to produce one final value.
