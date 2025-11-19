@@ -1,15 +1,16 @@
-// use Of map,filter reduce
+import React from "react";
+import ReactDOM from "react-dom/client"
+import Learn from "./Components/Learn";
 
 
-const arr = [1, 4, 5, 9];
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-console.log(arr.reduce(function abc(max, curr) {
-    
-    if (curr > max)
-        max = curr;
-        
-    return max;
-},0))
+root.render(<Learn />)
+
+
+
+
+
 
 
 

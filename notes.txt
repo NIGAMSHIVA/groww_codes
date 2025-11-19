@@ -99,3 +99,9 @@ queue then the callback queue dont get the opportunity to get in the callstack.T
 filter() → selects elements based on condition.
 
 reduce() → combines elements to produce one final value.
+
+18.Actually promise originate because of the problem if there are two APIs ,first is createOrder() and second is proceedToPayment().Second is called only when the first is
+called .we Need the order ID So we can do one thing pass proceed to payment as callback function in createOrder.But the problem is if there is some problem in API that results
+to never calling the proceedToPayment so for that we decalare
+const promise=createOrder() promise now have the empty object which is filled after some time.
+and we pass the callback function inide the promise.then(CB)
